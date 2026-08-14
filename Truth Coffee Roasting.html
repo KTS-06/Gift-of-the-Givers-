@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth Coffee Roasting - Steampunk Headquarters</title>
+    <style>
+        /* CSS Variables defining the industrial steampunk brand aesthetic */
+        :root {
+            --bg-dark: #12100e;
+            --card-bg: #1c1815;
+            --accent-copper: #c87d55;
+            --accent-brass: #d4af37;
+            --text-cream: #f4ebd9;
+            --text-muted: #a89f91;
+            --border-copper: #8c5332;
+        }
+
+        /* Basic Layout Framework Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-cream);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 5.2 Semantically Valid Tag Layout Elements */
+        header {
+            background-color: #0a0908;
+            border-bottom: 2px solid var(--border-copper);
+            padding: 1.2rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .brand-logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--accent-copper);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .brand-logo span {
+            color: var(--accent-brass);
+        }
+
+        /* 5.4 Functional Navigation Links Styling */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-cream);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active-link {
+            color: var(--accent-copper);
+        }
+
+        .cta-nav-button {
+            border: 1px solid var(--accent-copper);
+            color: var(--accent-copper) !important;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2px;
+        }
+
+        .cta-nav-button:hover {
+            background-color: var(--accent-copper);
+            color: var(--bg-dark) !important;
+        }
+
+        /* Main Structural Body Viewport Wrapper */
+        main {
+            flex: 1;
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 5.1 & 5.3 Page-Section Control Scaffolding */
+        .web-page {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .web-page.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Shared Basic HTML Presentation Components */
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-brass);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        ul.content-list {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        ul.content-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-banner {
+            background: linear-gradient(rgba(18, 16, 14, 0.75), rgba(18, 16, 14, 0.75)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200') no-repeat center center/cover;
+            color: var(--text-cream);
+            padding: 6rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border-copper);
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner h1 {
+            color: var(--text-cream);
+            font-size: 2.2rem;
+        }
+
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border: 1px solid var(--border-copper);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .price-badge {
+            display: inline-block;
+            background-color: var(--accent-copper);
+            color: var(--bg-dark);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        /* Data Form Controls for Enquiry and Contact Pages */
+        form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border: 1px solid var(--border-copper);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent-brass);
+            text-transform: uppercase;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-copper);
+            color: var(--text-cream);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-brass);
+        }
+
+        button.submit-btn {
+            background-color: var(--accent-copper);
+            color: var(--bg-dark);
+            padding: 0.75rem 2rem;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s ease;
+        }
+
+        button.submit-btn:hover {
+            background-color: var(--accent-brass);
+        }
+
+        /* 5.2 Global Footer Layout */
+        footer {
+            background-color: #0a0908;
+            color: var(--text-cream);
+            padding: 2rem 5%;
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: auto;
+            border-top: 2px solid var(--border-copper);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-reg-info {
+            font-size: 0.75rem;
+            color: #665e52;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Standard Header and Navigation Setup -->
+    <header>
+        <div class="header-container">
+            <div class="brand-logo">Truth <span>Coffee</span></div>
+            <nav id="main-navigation">
+                <ul>
+                    <li><a onclick="navigateToPage('home-view')" id="link-home-view" class="active-link">Home</a></li>
+                    <li><a onclick="navigateToPage('about-view')" id="link-about-view">About Us</a></li>
+                    <li><a onclick="navigateToPage('services-view')" id="link-services-view">Services</a></li>
+                    <li><a onclick="navigateToPage('enquiry-view')" id="link-enquiry-view">Enquiry</a></li>
+                    <li><a onclick="navigateToPage('contact-view')" id="link-contact-view">Contact</a></li>
+                    <li><a onclick="navigateToPage('enquiry-view')" class="cta-nav-button">Order Beans</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Semantically Bound Main Section Wrapper containing all 5 Required Pages -->
+    <main id="main-content-container">
+
+        <!-- PAGE 1: HOME PAGE (index.html) -->
+        <section id="home-view" class="web-page active-page">
+            <div class="hero-banner">
+                <h1>No Innermost Secrets. Just Truth.</h1>
+                <p>Artisanal coffee roasted in our vintage cast-iron drum roaster "Colossus".</p>
+            </div>
+            <div class="content-card" style="margin-bottom: 1.5rem;">
+                <h2>Steampunk Coffee Culture in Cape Town</h2>
+                <p>Truth Coffee Roasting offers extraordinary coffee experiences driven by an uncompromising anti-snobbery philosophy. Located in the heart of Buitenkant Street, we blend mechanical steampunk heritage with world-class coffee craftsmanship.</p>
+                <p>From custom single-origin imports to sensory-rich espresso blends, every batch is precision-roasted using vintage techniques and cut edge flavor profiling.</p>
+            </div>
+        </section>
+
+        <!-- PAGE 2: ABOUT US PAGE (about.html) -->
+        <section id="about-view" class="web-page">
+            <h2>Our Story & Steampunk Heritage</h2>
+            <p>Voted one of the best coffee shops in the world, Truth Coffee Roasting turns artisan roasting into a living industrial art form.</p>
+            
+            <div class="responsive-grid">
+                <div class="content-card">
+                    <h3>The Buitenkant HQ</h3>
+                    <p>Designed around our iconic vintage cast-iron roaster 'Colossus', our headquarters features leather, brass, copper, and mechanical clockwork elements built for lovers of raw industrial design.</p>
+                </div>
+                <div class="content-card">
+                    <h3>The Anti-Snobbery Mandate</h3>
+                    <p>We reject pretension in favor of pure excellence. Our mission is to roast coffee so good that you will never need or want to add sugar to your cup.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: SERVICE/PRODUCTS PAGE (services.html / products.html) -->
+        <section id="services-view" class="web-page">
+            <h2>Artisanal Blends & Cafe Offerings</h2>
+            <p>Explore our signature roast offerings, wholesale distribution tiers, and specialized coffee services:</p>
+            
+            <div class="responsive-grid">
+                <div class="content-card">
+                    <h3>Resurrection Blend</h3>
+                    <p>Our flagship espresso roast featuring rich chocolate tones, spicy undertones, and a velvety cremal finish.</p>
+                    <span class="price-badge">R145 / 250g</span>
+                </div>
+                <div class="content-card">
+                    <h3>Black Honey Roast</h3>
+                    <p>A sweet, complex single-origin profile with natural honey-processed fruit notes and balanced acidity.</p>
+                    <span class="price-badge">R165 / 250g</span>
+                </div>
+                <div class="content-card">
+                    <h3>Barista Academy Training</h3>
+                    <p>Hands-on professional barista certification courses covering espresso extraction, milk texturing, and roaster mechanics.</p>
+                    <span class="price-badge">Courses from R2,500</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: ENQUIRY PAGE (enquiry.html) -->
+        <section id="enquiry-view" class="web-page">
+            <h2 style="text-align: center; margin-bottom: 1rem;">Wholesale & Academy Enquiries</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto;">Submit an enquiry to partner with us for wholesale bean supply, event venue hire, or student placement in our Barista Academy.</p>
+            
+            <form id="truth-enquiry-form" onsubmit="processFormSubmission(event, 'Enquiry')">
+                <div class="form-row">
+                    <label for="enquiry-type">Enquiry Type</label>
+                    <select id="enquiry-type" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="wholesale">Wholesale Bean Distribution</option>
+                        <option value="academy">Barista Academy Course</option>
+                        <option value="event">Steampunk Venue Hire</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="applicant-name">Full Name / Business Entity</label>
+                    <input type="text" id="applicant-name" required placeholder="Enter name or company details">
+                </div>
+                <div class="form-row">
+                    <label for="applicant-email">Email Address</label>
+                    <input type="email" id="applicant-email" required placeholder="name@domain.com">
+                </div>
+                <div class="form-row">
+                    <label for="applicant-notes">Specific Requirements / Message</label>
+                    <textarea id="applicant-notes" rows="4" placeholder="Detail your requested quantities or course availability dates..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Enquiry</button>
+            </form>
+        </section>
+
+        <!-- PAGE 5: CONTACT PAGE (contact.html) -->
+        <section id="contact-view" class="web-page">
+            <h2>Location & Contact Directories</h2>
+            <p>Visit our headquarters or get in touch with our team directly:</p>
+            
+            <div class="responsive-grid" style="margin-bottom: 3rem;">
+                <div class="content-card">
+                    <h3>Cape Town Steampunk HQ</h3>
+                    <p><strong>Address:</strong> 36 Buitenkant Street, Cape Town City Centre, 8000</p>
+                    <p><strong>Phone:</strong> +27 21 200 0440</p>
+                    <p><strong>Email:</strong> cafe@truth.coffee</p>
+                </div>
+                <div class="content-card">
+                    <h3>Distribution & Roastery Hub</h3>
+                    <p><strong>Address:</strong> Buitenkant Logistics Unit, Cape Town, South Africa</p>
+                    <p><strong>Phone:</strong> +27 21 200 0441</p>
+                    <p><strong>Email:</strong> wholesale@truth.coffee</p>
+                </div>
+            </div>
+
+            <form id="contact-message-form" onsubmit="processFormSubmission(event, 'Contact')">
+                <h3>Send Us a Direct Message</h3>
+                <br>
+                <div class="form-row">
+                    <label for="msg-sender">Your Name</label>
+                    <input type="text" id="msg-sender" required placeholder="Jane Doe">
+                </div>
+                <div class="form-row">
+                    <label for="msg-email">Your Email</label>
+                    <input type="email" id="msg-email" required placeholder="jane@domain.com">
+                </div>
+                <div class="form-row">
+                    <label for="msg-text">Message Content</label>
+                    <textarea id="msg-text" rows="3" required placeholder="Type your message here..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Main Footer Structuring Element -->
+    <footer>
+        <p>&copy; 2026 Truth Coffee Roasting. Developed for Web Development Assessment Purposes.</p>
+        <p class="footer-reg-info">36 Buitenkant Street, Cape Town, South Africa | Truth HQ</p>
+    </footer>
+
+    <!-- Interactive Scripts Engine for Single-File Multi-Page Rendering -->
+    <script>
+        /**
+         * 5.4 Navigation Menu Link Interactivity Control Engine
+         * Switches visibility states cleanly between simulated layout sections.
+         */
+        function navigateToPage(targetPageId) {
+            // Hide all active view panels
+            const separatePages = document.querySelectorAll('.web-page');
+            separatePages.forEach(page => {
+                page.classList.remove('active-page');
+            });
+
+            // Strip styling classes from current menu link nodes
+            const generalLinks = document.querySelectorAll('#main-navigation a');
+            generalLinks.forEach(link => {
+                link.classList.remove('active-link');
+            });
+
+            // Display targeted section layout
+            const requestedSection = document.getElementById(targetPageId);
+            if (requestedSection) {
+                requestedSection.classList.add('active-page');
+            }
+
+            // Apply styling highlights to selected menu item
+            const activatedLink = document.getElementById('link-' + targetPageId);
+            if (activatedLink) {
+                activatedLink.classList.add('active-link');
+            }
+
+            // Scroll window layout back to top position seamlessly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /**
+         * Client Form Submission Processor
+         */
+        function processFormSubmission(event, formDescriptor) {
+            event.preventDefault();
+            alert('Success! Your ' + formDescriptor + ' message has been recorded.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

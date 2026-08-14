@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift of the Givers Foundation - Structural Assessment</title>
+    <style>
+        /* CSS Variables defining the corporate branding color scheme */
+        :root {
+            --bg-cream: #FAF8F5;
+            --text-charcoal: #2D3748;
+            --primary-crimson: #C53030;
+            --accent-green: #2F855A;
+            --white: #ffffff;
+            --light-gray: #edf2f7;
+        }
+
+        /* Basic Layout Framework Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Aptos', 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-charcoal);
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 5.2 Semantically Valid Tag Layout Elements */
+        header {
+            background-color: var(--white);
+            border-bottom: 2px solid #e2e8f0;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-crimson);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 5.4 Functional Navigation Links Styling */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-charcoal);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active-link {
+            color: var(--primary-crimson);
+        }
+
+        .cta-nav-button {
+            background-color: var(--primary-crimson);
+            color: var(--white) !important;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .cta-nav-button:hover {
+            background-color: #a52828;
+        }
+
+        /* Main Structural Body Viewport Wrapper */
+        main {
+            flex: 1;
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 5.1 & 5.3 Page-Section Control Scaffolding */
+        .web-page {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .web-page.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Shared Basic HTML Presentation Components */
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: var(--text-charcoal);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: #4a5568;
+            font-size: 11pt; /* Aptos body size matching the specification */
+        }
+
+        ul.content-list {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        ul.content-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200') no-repeat center center/cover;
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner h1 {
+            color: var(--white);
+            font-size: 2.2rem;
+        }
+
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .content-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--accent-green);
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: var(--white);
+            padding: 0.2rem 0.5rem;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        /* Data Form Controls for Enquiry and Contact Pages */
+        form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 6px;
+            max-width: 650px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-row {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(47, 133, 90, 0.15);
+        }
+
+        button.submit-btn {
+            background-color: var(--accent-green);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s ease;
+        }
+
+        button.submit-btn:hover {
+            background-color: #236343;
+        }
+
+        /* 5.2 Global Footer Layout */
+        footer {
+            background-color: var(--text-charcoal);
+            color: var(--white);
+            padding: 2rem 5%;
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: auto;
+            border-top: 4px solid var(--primary-crimson);
+        }
+
+        footer p {
+            color: #cbd5e0;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-reg-info {
+            font-size: 0.75rem;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Standard Header and Navigation Setup -->
+    <header>
+        <div class="header-container">
+            <div class="brand-logo">Gift Of The Givers</div>
+            <nav id="main-navigation">
+                <ul>
+                    <li><a onclick="navigateToPage('home-view')" id="link-home-view" class="active-link">Home</a></li>
+                    <li><a onclick="navigateToPage('about-view')" id="link-about-view">About Us</a></li>
+                    <li><a onclick="navigateToPage('services-view')" id="link-services-view">Services</a></li>
+                    <li><a onclick="navigateToPage('enquiry-view')" id="link-enquiry-view">Enquiry</a></li>
+                    <li><a onclick="navigateToPage('contact-view')" id="link-contact-view">Contact</a></li>
+                    <li><a onclick="navigateToPage('enquiry-view')" class="cta-nav-button">Donate Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Semantically Bound Main Section Wrapper containing all 5 Required Pages -->
+    <main id="main-content-container">
+
+        <!-- PAGE 1: HOME PAGE (index.html simulation) -->
+        <section id="home-view" class="web-page active-page">
+            <div class="hero-banner">
+                <h1>Restoring Dignity to the Vulnerable</h1>
+                <p>The largest disaster response non-governmental organization of African origin on the continent.</p>
+            </div>
+            <div class="content-card" style="margin-bottom: 1.5rem;">
+                <h2>Bringing Unconditional Humanitarian Assistance</h2>
+                <p>Gift of the Givers brings humanitarian aid unconditionally, restoring hope and rebuilding highly vulnerable communities irrespective of race, religion, color, class, or political affiliation[cite: 1].</p>
+                <p>Our digital transformation infrastructure scales emergency field operations, consolidates donation validation logic, and streamlines compliance management dynamically[cite: 1].</p>
+            </div>
+        </section>
+
+        <!-- PAGE 2: ABOUT US PAGE (about.html simulation) -->
+        <section id="about-view" class="web-page">
+            <h2>Our History, Mission and Vision</h2>
+            <p>Providing structural transparency and historical operational validation data for corporate and individual financial contributors[cite: 1].</p>
+            
+            <div class="responsive-grid">
+                <div class="content-card">
+                    <h3>33 Years of Impact</h3>
+                    <p>Founded in 1992 by Dr. Imtiaz Sooliman following a spiritual instruction in Istanbul, the foundation has delivered over R6 billion in structured humanitarian relief across 47 countries[cite: 1].</p>
+                </div>
+                <div class="content-card">
+                    <h3>Strategic Mission</h3>
+                    <p>To deliver rapid, high-impact relief solutions inside vulnerable economic zones, serving humanity unconditionally through robust logistics structures[cite: 1].</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: SERVICE/PRODUCTS PAGE (services.html simulation) -->
+        <section id="services-view" class="web-page">
+            <h2>Our Core Humanitarian Offerings & Pillars</h2>
+            <p>Our operational structures execute targeted socio-economic development interventions across multiple specialized divisions:</p>
+            
+            <div class="responsive-grid">
+                <div class="content-card">
+                    <h3>Disaster Response</h3>
+                    <p>Rapid tactical deployment of search-and-rescue squads, nutritional supplies, and emergency housing systems immediately following catastrophic regional infrastructure failures[cite: 1].</p>
+                    <span class="status-badge">Active Deployment</span>
+                </div>
+                <div class="content-card">
+                    <h3>Water Provision Interventions</h3>
+                    <p>Mitigating critical clean water scarcity through the deployment of heavy-drilling equipment, high-yield boreholes, and automated regional water purification plants[cite: 1].</p>
+                    <span class="status-badge">Active Deployment</span>
+                </div>
+                <div class="content-card">
+                    <h3>Healthcare & Medical Support</h3>
+                    <p>Sustaining regional hospitals with deep medical infrastructure development, mobile primary healthcare units, and critical pharmaceutical supplies[cite: 1].</p>
+                    <span class="status-badge">Active Deployment</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: ENQUIRY PAGE (enquiry.html simulation) -->
+        <section id="enquiry-view" class="web-page">
+            <h2 style="text-align: center; margin-bottom: 1rem;">Sponsorship & Volunteer Portal</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto;">Submit your application through our automated registration interface to systematically register as a volunteer or coordinate institutional sponsorship allocations[cite: 1].</p>
+            
+            <form id="volunteer-enquiry-form" onsubmit="processFormSubmission(event, 'Enquiry')">
+                <div class="form-row">
+                    <label for="enquiry-type">Enquiry Category</label>
+                    <select id="enquiry-type" required>
+                        <option value="">-- Choose Category --</option>
+                        <option value="field-volunteer">Register as a Field Volunteer</option>
+                        <option value="corp-sponsor">Become an Institutional Sponsor (Section 18A Tax Certification)</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="applicant-name">Full Name / Corporate Entity Name</label>
+                    <input type="text" id="applicant-name" required placeholder="Enter name details">
+                </div>
+                <div class="form-row">
+                    <label for="applicant-email">Email Address</label>
+                    <input type="email" id="applicant-email" required placeholder="example@domain.org">
+                </div>
+                <div class="form-row">
+                    <label for="applicant-notes">Additional Capabilities / Sponsorship Details</label>
+                    <textarea id="applicant-notes" rows="4" placeholder="Detail your background qualifications or proposed support parameters..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Form Request</button>
+            </form>
+        </section>
+
+        <!-- PAGE 5: CONTACT PAGE (contact.html simulation) -->
+        <section id="contact-view" class="web-page">
+            <h2>Multi-Location Contact Information</h2>
+            <p>Get in touch directly with our centralized regional monitoring offices for emergency response reporting[cite: 1]:</p>
+            
+            <div class="responsive-grid" style="margin-bottom: 3rem;">
+                <div class="content-card">
+                    <h3>National Head Office (Pietermaritzburg)</h3>
+                    <p><strong>Physical Address:</strong> 290 Burger Street, Pietermaritzburg, South Africa[cite: 1]</p>
+                    <p><strong>Telephone Hotline:</strong> +27 33 345 0169</p>
+                    <p><strong>Email Routing:</strong> info@giftofthegivers.org</p>
+                </div>
+                <div class="content-card">
+                    <h3>Gauteng Regional Branch (Johannesburg)</h3>
+                    <p><strong>Physical Address:</strong> 37 Robinson Road, Mayfair, Johannesburg, South Africa[cite: 1]</p>
+                    <p><strong>Telephone Hotline:</strong> +27 11 832 1798</p>
+                    <p><strong>Email Routing:</strong> jhb@giftofthegivers.org</p>
+                </div>
+            </div>
+
+            <form id="contact-message-form" onsubmit="processFormSubmission(event, 'Contact')">
+                <h3>Send an Urgent Field Message</h3>
+                <br>
+                <div class="form-row">
+                    <label for="msg-sender">Your Name</label>
+                    <input type="text" id="msg-sender" required placeholder="John Doe">
+                </div>
+                <div class="form-row">
+                    <label for="msg-email">Your Email</label>
+                    <input type="email" id="msg-email" required placeholder="john@domain.com">
+                </div>
+                <div class="form-row">
+                    <label for="msg-text">Message Content</label>
+                    <textarea id="msg-text" rows="3" required placeholder="Type your message here..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" style="background-color: var(--primary-crimson);">Send Direct Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Main Footer Structuring Element -->
+    <footer>
+        <p>&copy; 2026 Gift of the Givers Foundation. Developed for Academic Structural Assessment Layouts[cite: 1].</p>
+        <p class="footer-reg-info">Non-Profit Organization Registration: NPO 032-031 | PBO Reference Number: 930001353[cite: 1]</p>
+    </footer>
+
+    <!-- Interactive Scripts Engine for Single-File Multi-Page Rendering -->
+    <script>
+        /**
+         * 5.4 Navigation Menu Link Interactivity Control Engine
+         * Switches visibility states cleanly between simulated layout sections.
+         */
+        function navigateToPage(targetPageId) {
+            // Hide all active view panels
+            const separatePages = document.querySelectorAll('.web-page');
+            separatePages.forEach(page => {
+                page.classList.remove('active-page');
+            });
+
+            // Strip styling classes from current menu link nodes
+            const generalLinks = document.querySelectorAll('#main-navigation a');
+            generalLinks.forEach(link => {
+                link.classList.remove('active-link');
+            });
+
+            // Display targeted section layout
+            const requestedSection = document.getElementById(targetPageId);
+            if (requestedSection) {
+                requestedSection.classList.add('active-page');
+            }
+
+            // Apply styling highlights to selected menu item
+            const activatedLink = document.getElementById('link-' + targetPageId);
+            if (activatedLink) {
+                activatedLink.classList.add('active-link');
+            }
+
+            // Scroll window layout back to top position seamlessly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /**
+         * Client Form Submission Processor
+         */
+        function processFormSubmission(event, formDescriptor) {
+            event.preventDefault();
+            alert('Validation successful! Your ' + formDescriptor + ' dataset has been logged into the simulation queue.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
