@@ -1,4 +1,4 @@
-# Gift-of-the-Givers-and-Toast-Coffee-Roasting
+# Gift-of-the-Givers
 
 Student number:ST10493438
 
@@ -66,30 +66,4 @@ o	Cape Town: 4 Aarbeidsweg, Penlyn Estate
 
 o	Durban: 563 Ridge Road, Overport
 
-•	Contact Form: A direct, low-bandwidth, asynchronous contact transmission form paired with their verified national toll-free support line (0800 786 911). 
-
-
-
-Name: Truth Coffee Roasting 
-Brief History: Co-founded by Andrzej Janik and David Donde in Cape Town, Truth Coffee Roasting is a globally celebrated specialty coffee cafe and roastery operating out of a historic three-story Victorian warehouse. It is internationally renowned for its spectacular steampunk architectural theme and artisan blends. 
-Mission and Vision: Dedicated to roasting "Proper Coffee" to achieve full-flavored extraction without bitterness, creating unforgettable immersive culinary and specialty beverage experiences. 
-Target Audience: Local artisanal coffee aficionados, international culinary tourists visiting Cape Town, direct-to-consumer digital subscription buyers, and commercial wholesale hospitality operations
-
-Website Goals and Objectives 
-
-•	Drive Direct-to-Consumer E-commerce: Boost domestic retail coffee bean and capsule online orders by 40% via seamless product filtering. 
-
-•	Grow Continuous Coffee Subscriptions: Establish an interactive, custom recurring monthly subscription portal. 
-
-•	Enhance Table and Event Bookings: Deploy an integrated digital reservation system to maximize peak warehouse floor occupancy. 
-Key Performance Indicators (KPIs): 
-1. Monthly conversion rate variations on the direct coffee bean e-commerce product pages.
-2.Net new sign-ups for the automated recurring monthly subscription model. 
-3. Successful online table reservations completed without administrative phone interventions. 
-
-Functional page Blueprint
-•	Homepage (index.html): Features a full-width industrial hero section displaying the iconic vintage roaster "Colossus," a brief dramatic introduction to Truth's artisan anti-snobbery coffee philosophy, persistent global navigation menus, and immediate calls to action (CTAs) directing traffic straight to the eCommerce store or table reservation portals.
-•	About Us (about.html): Details the origin story of the Buitenkant Street headquarters, the vision of the founders, the specialized roasting staff profile matrix, and an introduction to the world-renowned steampunk theme engine that drives the shop's interior atmosphere.
-•	Products (products.html): Displays detailed data, high-quality images, and profiles for the signature wholesale and retail artisanal coffee beans (such as the Resurrection Blend and Black Honey roasts), along with current cafe menu pricing tiers.
-•	Enquiry (enquiry.html): Custom-built form layout processing customer input for institutional wholesale accounts, corporate event venue hires packages, or student registration modules for the Barista Academy.
-•	Contact (contact.html): Complete address maps routing visitors to the primary Cape Town Steampunk Cafe and alternative distribution hubs, along with phone directories and an automated feedback message module.
+•	Contact Form: A direct, low-bandwidth, asynchronous contact transmission form paired with their verified national toll-free support line (0800 786 911).
